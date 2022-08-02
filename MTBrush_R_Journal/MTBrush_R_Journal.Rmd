@@ -249,7 +249,7 @@ takeaways.
 \color{black}
 
 ```{r, fig.cap = "The overall MTBrush workflow, including helper functions for deriving multiple hypothesis test statistics and final visualization."}
-include_graphics("../../MTBrush/workflow_pic.png")
+include_graphics("../workflow_pic.png")
 ```
 
 
@@ -304,6 +304,20 @@ should think of how to transition to this description. Yes they are the caption\
 ```{r, fig.cap = "Descriptions for each section of the interface after brushing. C: After brushing, test statistics with magnitude within the selected interval will be highlighted (red for selected and orange for reflected values). The selected features will be highlighted across all histograms; D: The scatterplots of top 12 features in the table of selected features will be shown here. By adding or deleting the chosen ID on the left select menu, users can choose to see the scatterplot of features of interest; E: By default, only 12 features will be chosen at first. Users can use the dropdown menu to follow the features of interest; F: The table of selected features in the brushed area. Colors match those in the upper histograms."}
 include_graphics("../../MTBrush/interface2.jpg")
 ```
+
+We provide two variations on this core visual design. In the first, we enable
+visualization for continuous, rather than binary, input features. In this case,
+conditions cannot be enumerated as in panel D above. Instead, we replace the
+elements of the faceted view with a scatterplot of covariates of interest
+against the response. This functionality is available through the
+`brush_plots_nonbi` function, and we illustrate its use in the Housing Prices
+case study below. In the second, we consider situations where experiments are
+run in parallel, and where it is of interest to compare statistics for each
+feature between matched pairs of statistics. For such comparisons, we provide
+the `brush_plots_comparison` function. This function extends histogram to
+scatterplot brushing to allow this comparison. For example, this can highlight
+features which are significant in one of the settings, but not the corresponding
+matched one. We illustrate this function in our THOR case study below.
 
 # Cases Studies
 
@@ -510,7 +524,7 @@ and integrating this work into the MTBrush interface is an intriguing
 possibility.
 
 The MTBrush package can be installed by running
-`remotes::install_github("YixingTT/MTBrush/MTBrush")` Detailed documentation can
+`remotes::install_github("YixingTT/MTBrush")` Detailed documentation can
 be found at [tinyurl/link](tinyurl/link). The interactive interfaces created in
 our case studies can be viewed by visiting [first/shiny/demo](first/shiny/demo)
 and [second/shiny/demo](second/shiny/demo).
